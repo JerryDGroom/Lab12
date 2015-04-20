@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1429555680 source:c:\users\jerry groom\desktop\data structures\lab12\test12.cpp
+	<iostream>
+	<cstring>
+	<cctype>
+	"WeightedGraph.h"
+	"config.h"
+
+1429552744 c:\users\jerry groom\desktop\data structures\lab12\weightedgraph.h
+	<stdexcept>
+	<iostream>
+	<climits>
+	<string>
+
+1429552744 c:\users\jerry groom\desktop\data structures\lab12\config.h
+
+1429557282 source:c:\users\jerry groom\desktop\data structures\lab12\weightedgraph.cpp
+	"WeightedGraph.h"
+	"config.h"
+
