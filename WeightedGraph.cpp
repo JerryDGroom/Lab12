@@ -5,6 +5,45 @@
 //
 //--------------------------------------------------------------------
 
+
+/*
+===========================================================================================
+Answers to Questions on Lab12 (Weighted Graph) Worksheet per below output:
+
+Minimum distance from Ames(Vertex "0")      to  Oskaloosa(Vertex "7")    --> 91 miles
+Minimum distance from Grinnell(Vertex "6")  to  Indianola(Vertex "2")    --> 68 miles
+Minimum distance from Knoxville(Vertex "5") to  Marshalltown(Vertex "3") --> 76 miles
+
+===========================================================================================
+Weighted Graph Path Matrix Results
+===========================================================================================
+Command (H for help): =GRINNELL OSKALOOSA 34
+Insert edge : GRINNELL OSKALOOSA 34
+
+Path matrix :
+        0       1       2       3       4       5       6       7
+0       0       28      46      38      59      66      68      91
+1       28      0       18      49      31      38      50      63
+2       46      18      0       67      49      27      68      52
+3       38      49      67      0       49      76      30      64
+4       59      31      49      49      0       27      19      43
+5       66      38      27      76      27      0       46      25
+6       68      50      68      30      19      46      0       34
+7       91      63      52      64      43      25      34      0
+
+Vertex list :
+0       AMES
+1       DESMOINES
+2       INDIANOLA
+3       MARSHALLTOWN
+4       NEWTON
+5       KNOXVILLE
+6       GRINNELL
+7       OSKALOOSA
+===========================================================================================
+*/
+
+
 #ifndef WEIGHTEDGRAPH_CPP
 #define WEIGHTEDGRAPH_CPP
 
