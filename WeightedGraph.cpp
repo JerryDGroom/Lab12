@@ -116,7 +116,8 @@ void WeightedGraph:: insertVertex ( const Vertex& newVertex ) throw ( logic_erro
         throw logic_error("graph is full");
 
     pos = getIndex(newVertex.getLabel());
-    vertexList[ pos ] = newVertex;  // <------------------------- fill in the array index
+    vertexList[ size ] = newVertex;  // <------------------------- fill in the array index
+    //vertexList[ pos ] = newVertex;
 
 // debug
 //cout << "newVertex.getLabel = " << newVertex.getLabel()
@@ -350,40 +351,42 @@ class pathMatrix {
 };
 
 void WeightedGraph::showShortestPaths() const {
-    pathMatrix pm(size);
+	pathMatrix pm(size);
 
-    for ( int j = 0 ; j < size ; j++ )           // Copy edge matrix
-        for ( int k = 0 ; k < size ; k++ )
-            pm.setPath(j,k, getEdge(j,k));
+	for ( int j = 0 ; j < size ; j++ )           // Copy edge matrix
+		for ( int k = 0 ; k < size ; k++ )
+			pm.setPath(j,k, getEdge(j,k));
 
-    for ( int j = 0 ; j < size ; j++ )           // Set diagonal to 0
-        pm.setPath(j,j, 0);
+	for ( int j = 0 ; j < size ; j++ )           // Set diagonal to 0
+		pm.setPath(j,j, 0);
 
-    for ( int m = 0 ; m < size ; m++ )           // Compute paths
-        for ( int j = 0 ; j < size ; j++ )
-            for ( int k = 0 ; k < size ; k++ )
-                pm.setPath(j,k,(( m,k ) + ( j,m )));
-// <------------ After your WeightedGraph is working, uncomment this line and fill in
+	for ( int m = 0 ; m < size ; m++ )           // Compute paths
+		for ( int j = 0 ; j < size ; j++ )
+			for ( int k = 0 ; k < size ; k++ )
+				if ( long(pm.getPath(j,m)) + pm.getPath(m,k) < pm.getPath(j,k) )
+					pm.setPath(j,k, (pm.getPath(j,m) + pm.getPath(m,k)));   // <------------ After your WeightedGraph is working, uncomment this line and fill in
+					                                                                  // the blank using Floyd's algorithm described in the middle of page. 157
 
-cout << endl << "Path matrix : " << endl << '\t';
-    for ( int col = 0 ; col < size ; col++ )
-       cout << col << '\t';
-    cout << endl;
-    for ( int row = 0 ; row < size ; row++ )
-    {
-       cout << row << '\t';
-       for ( int col = 0 ; col < size ; col++ )
-       {
-	   int wt = pm.getPath(row,col);
-	   if ( wt == INFINITE_EDGE_WT )
-	      cout << "- \t";
-	   else
-	      cout << wt << '\t';
-       }
-       cout << endl;
-    }
+	cout << endl << "Path matrix : " << endl << '\t';
+	for ( int col = 0 ; col < size ; col++ )
+		cout << col << '\t';
+	cout << endl;
+	for ( int row = 0 ; row < size ; row++ )
+	{
+		cout << row << '\t';
+		for ( int col = 0 ; col < size ; col++ )
+		{
+			int wt = pm.getPath(row,col);
+			if ( wt == INFINITE_EDGE_WT )
+				cout << "- \t";
+			else
+				cout << wt << '\t';
+		}
+		cout << endl;
+	}
 }
 #endif
+
 
 
 
