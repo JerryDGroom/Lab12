@@ -362,9 +362,8 @@ void WeightedGraph::showShortestPaths() const {
     for ( int m = 0 ; m < size ; m++ )           // Compute paths
         for ( int j = 0 ; j < size ; j++ )
             for ( int k = 0 ; k < size ; k++ )
-                if ( long(pm.getPath(j,m)) + pm.getPath(m,k) < pm.getPath(j,k) )
-                   pm.setPath(j,k,(pm.getPath(j,k)));
-
+                pm.setPath(j,k,(( m,k ) + ( j,m )));
+// <------------ After your WeightedGraph is working, uncomment this line and fill in
 
 cout << endl << "Path matrix : " << endl << '\t';
     for ( int col = 0 ; col < size ; col++ )
