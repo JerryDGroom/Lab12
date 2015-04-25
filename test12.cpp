@@ -21,36 +21,36 @@ int main()
 {
     // <-- construct a weighted graph called "testGraph" with an appropriate
     //max number of vertices
-    WeightedGraph testGraph(8);
+    //WeightedGraph testGraph(8);
 
 
-    WeightedGraph::Vertex testVertex;            // Vertex
-    string v1,
-         v2;   // Vertex labels
+    //WeightedGraph::Vertex testVertex;            // Vertex
+    //string v1,
+         //v2;   // Vertex labels
     char cmd;                     // Input command
-    int wt;                       // Edge weight
+    //int wt;                       // Edge weight
 
     print_help();
 
     do
     {
 
-#if LAB12_TEST1
-        testGraph.showShortestPaths();                 // In-lab Exercise 1
-#endif
+        //#if LAB12_TEST1
+        //testGraph.showShortestPaths();                 // In-lab Exercise 1
+        //#endif
 
 
-        testGraph.showStructure();                   // Output graph
+        //testGraph.showStructure();                   // Output graph
 
         cout << endl << "Command (H for help): ";                 // Read command
         cin >> cmd;
         cmd = toupper( cmd );			     // Normalize to upper case
-        if ( cmd == '+'  ||  cmd == '?'  ||  cmd == '-' )
-           cin >> v1;
-        else if ( cmd == '#'  ||  cmd == '!' )
-           cin >> v1 >> v2;
-        else if ( cmd == '=' )
-           cin >> v1 >> v2 >> wt;
+        //if ( cmd == '->' )
+           //cin >> v1;
+        //else if ( cmd == '#'  ||  cmd == '!' )
+          // cin >> v1 >> v2;
+        //else if ( cmd == '=' )
+          // cin >> v1 >> v2 >> wt;
 
 
 
@@ -60,60 +60,12 @@ int main()
                print_help();
                break;
 
-          case '+' :                                 // insertVertex
-               cout << "Insert vertex : " << v1 << endl;
-               testVertex.setLabel(v1);
-               testGraph.insertVertex(testVertex);
-               break;
-
-          case '=' :                                 // insertEdge
-               cout << "Insert edge : " << v1 << " " << v2 << " "
-                    << wt << endl;
-               testGraph.insertEdge(v1,v2,wt);
-               break;
-
-          case '?' :                                 // retrieveVertex
-               if ( testGraph.retrieveVertex(v1,testVertex) )
-                  cout << "Vertex " << v1 << " exists" << endl;
-               else
-                  cout << "Vertex NOT found" << endl;
-               break;
-
-          case '#' :                                 // edgeWeight
-               if ( testGraph.getEdgeWeight(v1,v2,wt) )
-                  cout << "Weight = " << wt << endl;
-               else
-                  cout << "No edge between these vertices" << endl;
-               break;
-
-          case '-' :                                 // removeVertex
-               cout << "Remove vertex " << v1 << endl;
-               testGraph.removeVertex(v1);
-               break;
-
-          case '!' :                                 // removeEdge
-               cout << "Remove the edge between vertices "
-                    << v1 << " and " << v2 << endl;
-               testGraph.removeEdge(v1,v2);
-               break;
-
-          case 'C' :                                 // clear
-               cout << "Clear the graph" << endl;
-               testGraph.clear();
-               break;
-
-          case 'E' :                                 // isEmpty
-               if ( testGraph.isEmpty() )
-                  cout << "Graph is empty" << endl;
-               else
-                  cout << "Graph is NOT empty" << endl;
-               break;
-
-          case 'F' :                                 // isFull
-               if ( testGraph.isFull() )
-                  cout << "Graph is full" << endl;
-               else
-                  cout << "Graph is NOT full" << endl;
+          case '->' :                                 // insertVertex
+               cout << "Run Program : " << endl;
+               //testVertex.setLabel(v1);
+               //testGraph.insertVertex(testVertex);
+               Scheduler sche;
+            sche.start();
                break;
 
           case 'Q' :                              // Quit test program
@@ -134,18 +86,7 @@ void print_help()
 #endif
     cout << endl << "Commands:" << endl;
     cout << "  H       : Help (displays this message)" << endl;
-    cout << "  +v      : Insert (or update) vertex v" << endl;
-    cout << "  =v w wt : Insert an edge with weight wt between "
-         << "vertices v and w" << endl;
-    cout << "  ?v      : Retrieve vertex" << endl;
-    cout << "  #v w    : Display the weight of the edge between "
-         << "vertices v and w" << endl;
-    cout << "  -v      : Remove vertex v" << endl;
-    cout << "  !v w    : Remove the edge between vertices v and w"
-         << endl;
-    cout << "  C       : Clear the graph" << endl;
-    cout << "  E       : Empty graph?" << endl;
-    cout << "  F       : Full graph?" << endl;
+    cout << "  ->      : Run the Program" << endl;
     cout << "  Q       : Quit the test program" << endl;
     cout << endl;
 
